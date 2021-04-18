@@ -1,0 +1,62 @@
+class Budget:
+    """This is a budget class"""
+
+
+    def __init__(self,name):
+        self.name = name
+        self.ledger = list()
+
+    def deposit(self, amount):
+        self.ledger.append({'amount: amount'})
+
+    def withdraw(self, amount):
+        if (self.check_funds(amount)):
+            self.ledger.append({'amount': -amount})
+            return  True
+        else:
+            return  False
+
+    def get_balance(self):
+        total = 0
+        for item in self.ledger:
+            total += item('amount')
+        return total
+
+    def transffer(self, amount, category):
+        if (self.check_funds(amount)):
+            self.withdraw(amount, 'Transfer to' + category.name)
+            category.deposit(amount, 'Transfer from' + self.name)
+            return True
+        else:
+            return False
+
+    def check_funds(self, amount):
+        if(self.get_balance() >= amount):
+            return True
+        else:
+            return False
+
+    budget1 = Budget('category')
+    budget1.category = 'Food'
+    #food = category.Budget('Food')
+    budget1.deposit(10000)
+    budget1.withdraw(10.50)
+    print(budget1.get_balance())
+
+    budget2 = Budget('category')
+    budget2.category = 'Clothing'
+    #clothing = category.Budget('Clothing')
+    budget2.deposit(2300)
+    food.transfer(50, clothing)
+    budget2.withdraw(20)
+
+    budget3 = Budget('category')
+    budget3.category = 'Clothing
+    #entertainment = category.Budget('Entertainment')
+    budget3.deposit(5000)
+    budget1.transfer(100, entertainment)
+    budget3.withdraw(100)
+
+    print(food)
+    print(clothing)
+    print(entertainment)
